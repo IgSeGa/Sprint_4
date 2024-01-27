@@ -10,15 +10,15 @@ import org.junit.Test;
 public class TestFAQ {
     WebDriver driver = new ChromeDriver();
     //Поле со значением локатора вопроса блока "Вопросы о важном"(значение от 0 до 7, где 0 - вопрос 1, а 7 - вопрос 8)
-    private final int num;
+    private final int numQuestion;
     //Поле со значением локатора текста вопроса блока "Вопросы о важном"(значение от 0 до 7, где 0 - вопрос 1, а 7 - вопрос 8)
-    private final int num1;
+    private final int numTextQuestion;
     //Поле с текстом для сравнения с текстом на сайте
-    private final String text;
-    public TestFAQ(int num, int num1, String text){
-        this.num = num;
-        this.num1 = num1;
-        this.text = text;
+    private final String expectedTextQuestion;
+    public TestFAQ(int numQuestion, int numTextQuestion, String expectedTextQuestion){
+        this.numQuestion = numQuestion;
+        this.numTextQuestion = numTextQuestion;
+        this.expectedTextQuestion = expectedTextQuestion;
     }
     @Parameterized.Parameters
     public static Object[][] getData(){
@@ -42,8 +42,8 @@ public class TestFAQ {
         driver.get("https://qa-scooter.praktikum-services.ru/");
         MainPage objMainPage = new MainPage(driver);
         objMainPage.scrollToFaq();
-        objMainPage.clickFaq(num);
-        objMainPage.checkFaq(num1,text);
+        objMainPage.clickFaq(numQuestion);
+        objMainPage.checkFaq(numTextQuestion, expectedTextQuestion);
     }
 
     @After

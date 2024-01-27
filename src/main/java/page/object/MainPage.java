@@ -60,8 +60,8 @@ public class MainPage {
         return questions[x];
     }
     //Клик на разделы блока "Вопросы о важном"
-    public void clickFaq(int num){
-        By question = getFaqQuestions(num);
+    public void clickFaq(int numQuestion){
+        By question = getFaqQuestions(numQuestion);
         driver.findElement(question).click();
     }
     //Метод для получения конкретного текста, появляющегося после клика на разделы блока "Вопросы о важном"
@@ -70,11 +70,11 @@ public class MainPage {
         return text[x];
     }
     //Проверка корректности текста в разделах блока "Вопросы о важном"
-    public void checkFaq(int num1, String text){
-        By faqText = getFaqText(num1);
+    public void checkFaq(int numTextQuestion, String expectedTextQuestion){
+        By faqText = getFaqText(numTextQuestion);
         new WebDriverWait(driver, Duration.ofSeconds(3))
                 .until(ExpectedConditions.textToBePresentInElementLocated
-                        (faqText, text));
+                        (faqText, expectedTextQuestion));
     }
     //Метод для получения конкретной кнопки "Заказать"
     private By getButtons(int x){
