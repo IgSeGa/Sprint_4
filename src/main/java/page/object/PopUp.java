@@ -1,5 +1,4 @@
-package PageObject;
-import org.junit.Assert;
+package page.object;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -24,10 +23,8 @@ public class PopUp {
     }
     //Метод проверяющий корректность окна оформления заказа
     public void checkOrderComplete(){
-        Assert.assertTrue(driver.findElement(textOrder).isDisplayed());
         new WebDriverWait(driver, Duration.ofSeconds(1)).until
                 (ExpectedConditions.textToBePresentInElementLocated(textOrder, "Заказ оформлен"));
-        Assert.assertTrue(driver.findElement(buttonOrder).isDisplayed());
         new WebDriverWait(driver, Duration.ofSeconds(1)).until
                 (ExpectedConditions.textToBePresentInElementLocated(buttonOrder, "Посмотреть статус"));
     }

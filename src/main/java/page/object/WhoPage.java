@@ -1,8 +1,11 @@
-package PageObject;
-import org.junit.Assert;
+package page.object;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class WhoPage {
     private WebDriver driver;
@@ -26,7 +29,8 @@ public class WhoPage {
     }
     //Проверка корректно загруженной страницы
     public void checkWhoPage(){
-        Assert.assertEquals("Для кого самокат", driver.findElement(titleOfPage).getText());
+        new WebDriverWait(driver, Duration.ofSeconds(3))
+                .until(ExpectedConditions.textToBePresentInElementLocated(titleOfPage, "Для кого самокат"));
     }
     //Метод для заполнения имени
     public void setFirstName(String name){

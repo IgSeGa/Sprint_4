@@ -1,4 +1,4 @@
-package PageObject;
+package page.object;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.JavascriptExecutor;
@@ -44,7 +44,7 @@ public class MainPage {
     //верхняя кнопка заказа
     private By buttonTop = By.className("Button_Button__ra12g");
     //нижняя кнопка заказа
-    private By buttonBottom = By.xpath("//*[@id=\"root\"]/div/div[1]/div[4]/div[2]/div[5]/button");
+    private By buttonBottom = By.xpath("//div[@class=\"Home_FinishButton__1_cWm\"]");
 
     public MainPage(WebDriver driver){
         this.driver = driver;
@@ -55,8 +55,8 @@ public class MainPage {
     }
     //Метод для получения отдельных вопросов блока "Вопросы о важном"
     private By getFaqQuestions(int x){
-        By [] questions = {faqQuestion1,faqQuestion2,faqQuestion3,faqQuestion4,
-                faqQuestion5,faqQuestion6,faqQuestion7,faqQuestion8};
+        By[] questions = {faqQuestion1, faqQuestion2, faqQuestion3, faqQuestion4,
+                faqQuestion5, faqQuestion6, faqQuestion7, faqQuestion8};
         return questions[x];
     }
     //Клик на разделы блока "Вопросы о важном"

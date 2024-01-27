@@ -1,8 +1,12 @@
-package PageObject;
-import org.junit.Assert;
+package page.object;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+
 public class RentPage {
     private WebDriver driver;
     //Заголовок страницы
@@ -28,7 +32,8 @@ public class RentPage {
     }
     //Метод проверяющий, что открыта нужная страница
     public void checkRentPage(){
-        Assert.assertEquals("Про аренду", driver.findElement(titleOfPage).getText());
+        new WebDriverWait(driver, Duration.ofSeconds(3))
+                .until(ExpectedConditions.textToBePresentInElementLocated(titleOfPage,"Про аренду"));
     }
     //Заполнение даты
     public void  setDeliveryDate(String date){

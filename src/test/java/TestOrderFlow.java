@@ -1,7 +1,7 @@
-import PageObject.MainPage;
-import PageObject.PopUp;
-import PageObject.RentPage;
-import PageObject.WhoPage;
+import page.object.MainPage;
+import page.object.PopUp;
+import page.object.RentPage;
+import page.object.WhoPage;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
@@ -28,7 +28,7 @@ public class TestOrderFlow {
     private final int buttonNumber;
 
     public TestOrderFlow(String name, String surname, String toWhere, String phoneNumber, String date, String textComment,
-    int buttonNumber){
+                         int buttonNumber) {
         this.name = name;
         this.surname = surname;
         this.toWhere = toWhere;

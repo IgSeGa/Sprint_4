@@ -1,4 +1,4 @@
-import PageObject.MainPage;
+import page.object.MainPage;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
@@ -9,7 +9,7 @@ import org.junit.Test;
 @RunWith(Parameterized.class)
 public class TestFAQ {
     WebDriver driver = new ChromeDriver();
-    //Поле со значением локатара вопроса блока "Вопросы о важном"(значение от 0 до 7, где 0 - вопрос 1, а 7 - вопрос 8)
+    //Поле со значением локатора вопроса блока "Вопросы о важном"(значение от 0 до 7, где 0 - вопрос 1, а 7 - вопрос 8)
     private final int num;
     //Поле со значением локатора текста вопроса блока "Вопросы о важном"(значение от 0 до 7, где 0 - вопрос 1, а 7 - вопрос 8)
     private final int num1;
