@@ -1,4 +1,4 @@
-package ru.qa.scooter.praktikum.services.pages;
+package ru.qa.scooter.praktikum.services.pageobjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -25,8 +25,10 @@ public class PopUp {
 
     //Метод проверяющий корректность окна оформления заказа
     public void checkOrderComplete() {
+        new WebDriverWait(driver, Duration.ofSeconds(3)).until(ExpectedConditions.presenceOfElementLocated(textOrder));
         new WebDriverWait(driver, Duration.ofSeconds(1)).until
                 (ExpectedConditions.textToBePresentInElementLocated(textOrder, "Заказ оформлен"));
+        new WebDriverWait(driver, Duration.ofSeconds(3)).until(ExpectedConditions.presenceOfElementLocated(buttonOrder));
         new WebDriverWait(driver, Duration.ofSeconds(1)).until
                 (ExpectedConditions.textToBePresentInElementLocated(buttonOrder, "Посмотреть статус"));
     }

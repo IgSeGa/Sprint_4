@@ -1,4 +1,4 @@
-package ru.qa.scooter.praktikum.services.pages;
+package ru.qa.scooter.praktikum.services.pageobjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -33,6 +33,8 @@ public class RentPage {
 
     //Метод проверяющий, что открыта нужная страница
     public void checkRentPage() {
+        new WebDriverWait(driver, Duration.ofSeconds(3))
+                .until(ExpectedConditions.presenceOfElementLocated(titleOfPage));
         new WebDriverWait(driver, Duration.ofSeconds(3))
                 .until(ExpectedConditions.textToBePresentInElementLocated(titleOfPage, "Про аренду"));
     }

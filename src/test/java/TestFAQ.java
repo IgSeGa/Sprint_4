@@ -1,4 +1,4 @@
-import ru.qa.scooter.praktikum.services.pages.MainPage;
+import ru.qa.scooter.praktikum.services.pageobjects.MainPage;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;

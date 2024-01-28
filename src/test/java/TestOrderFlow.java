@@ -1,7 +1,7 @@
-import ru.qa.scooter.praktikum.services.pages.MainPage;
-import ru.qa.scooter.praktikum.services.pages.PopUp;
-import ru.qa.scooter.praktikum.services.pages.RentPage;
-import ru.qa.scooter.praktikum.services.pages.WhoPage;
+import ru.qa.scooter.praktikum.services.pageobjects.MainPage;
+import ru.qa.scooter.praktikum.services.pageobjects.PopUp;
+import ru.qa.scooter.praktikum.services.pageobjects.RentPage;
+import ru.qa.scooter.praktikum.services.pageobjects.WhoPage;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
