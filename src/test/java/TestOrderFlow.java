@@ -1,7 +1,7 @@
-import page.object.MainPage;
-import page.object.PopUp;
-import page.object.RentPage;
-import page.object.WhoPage;
+import ru.qa.scooter.praktikum.services.pages.MainPage;
+import ru.qa.scooter.praktikum.services.pages.PopUp;
+import ru.qa.scooter.praktikum.services.pages.RentPage;
+import ru.qa.scooter.praktikum.services.pages.WhoPage;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
@@ -37,31 +37,34 @@ public class TestOrderFlow {
         this.textComment = textComment;
         this.buttonNumber = buttonNumber;
     }
+
     @Parameterized.Parameters
-    public static Object[][] getData(){
+    public static Object[][] getData() {
         return new Object[][]{
                 {"Имя", "Фамилия", "Нигдегород", "+12345678901", "28.01.2024", "Комментарий", 0},
                 {"Артём", "Савиновский", "ул. Льва Толстого, 16", "8(800)250-96-39", "31.12.2024",
                         "Доставлять строго до 17:00, дальше никого не будет дома", 1}
         };
     }
+
     @Test
-    public void checkOrderFlow(){
+    public void checkOrderFlow() {
         driver.get("https://qa-scooter.praktikum-services.ru/");
         MainPage objMainPage = new MainPage(driver);
         WhoPage objWhoPage = new WhoPage(driver);
         RentPage objRentPage = new RentPage(driver);
         PopUp objPopUp = new PopUp(driver);
         objMainPage.checkButton(buttonNumber);
-        objWhoPage.fillFormsWho(name, surname,toWhere,phoneNumber);
+        objWhoPage.fillFormsWho(name, surname, toWhere, phoneNumber);
         objWhoPage.checkButtonNext();
         objRentPage.fillFormsRent(date, textComment);
         objRentPage.clickOrderButton();
         objPopUp.clickYes();
         objPopUp.checkOrderComplete();
     }
+
     @After
-    public void endTest(){
+    public void endTest() {
         driver.quit();
     }
 }

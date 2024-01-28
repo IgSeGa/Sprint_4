@@ -1,4 +1,4 @@
-package page.object;
+package ru.qa.scooter.praktikum.services.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.JavascriptExecutor;
@@ -46,45 +46,52 @@ public class MainPage {
     //нижняя кнопка заказа
     private By buttonBottom = By.xpath("//div[@class=\"Home_FinishButton__1_cWm\"]");
 
-    public MainPage(WebDriver driver){
+    public MainPage(WebDriver driver) {
         this.driver = driver;
     }
+
     //Скролл до раздел "Вопросы о важном"
-    public void scrollToFaq(){
-        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(faqBlock));
+    public void scrollToFaq() {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(faqBlock));
     }
+
     //Метод для получения отдельных вопросов блока "Вопросы о важном"
-    private By getFaqQuestions(int x){
+    private By getFaqQuestions(int x) {
         By[] questions = {faqQuestion1, faqQuestion2, faqQuestion3, faqQuestion4,
                 faqQuestion5, faqQuestion6, faqQuestion7, faqQuestion8};
         return questions[x];
     }
+
     //Клик на разделы блока "Вопросы о важном"
-    public void clickFaq(int numQuestion){
+    public void clickFaq(int numQuestion) {
         By question = getFaqQuestions(numQuestion);
         driver.findElement(question).click();
     }
+
     //Метод для получения конкретного текста, появляющегося после клика на разделы блока "Вопросы о важном"
-    private By getFaqText(int x){
-        By [] text = {faqText1,faqText2,faqText3,faqText4,faqText5,faqText6,faqText7,faqText8};
+    private By getFaqText(int x) {
+        By[] text = {faqText1, faqText2, faqText3, faqText4, faqText5, faqText6, faqText7, faqText8};
         return text[x];
     }
+
     //Проверка корректности текста в разделах блока "Вопросы о важном"
-    public void checkFaq(int numTextQuestion, String expectedTextQuestion){
+    public void checkFaq(int numTextQuestion, String expectedTextQuestion) {
         By faqText = getFaqText(numTextQuestion);
         new WebDriverWait(driver, Duration.ofSeconds(3))
                 .until(ExpectedConditions.textToBePresentInElementLocated
                         (faqText, expectedTextQuestion));
     }
+
     //Метод для получения конкретной кнопки "Заказать"
-    private By getButtons(int x){
-        By [] buttons = {buttonTop, buttonBottom};
+    private By getButtons(int x) {
+        By[] buttons = {buttonTop, buttonBottom};
         return buttons[x];
     }
+
     //Метод для проверки кнопки заказа
-    public void checkButton(int buttonNumber){
+    public void checkButton(int buttonNumber) {
         By button = getButtons(buttonNumber);
-        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(button));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(button));
         new WebDriverWait(driver, Duration.ofSeconds(3))
                 .until(ExpectedConditions.elementToBeClickable(button));
         driver.findElement(button).click();

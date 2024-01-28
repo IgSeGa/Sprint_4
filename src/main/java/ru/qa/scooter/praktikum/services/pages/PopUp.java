@@ -1,4 +1,4 @@
-package page.object;
+package ru.qa.scooter.praktikum.services.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -14,15 +14,17 @@ public class PopUp {
     //Кнопка "Посмотреть статус"
     private By buttonOrder = By.xpath("//button[contains(text(), \"Посмотреть статус\")]");
 
-    public PopUp(WebDriver driver){
+    public PopUp(WebDriver driver) {
         this.driver = driver;
     }
+
     //Клик на кнопку "Да" для подтверждения заказа
-    public void clickYes(){
+    public void clickYes() {
         driver.findElement(yesButton).click();
     }
+
     //Метод проверяющий корректность окна оформления заказа
-    public void checkOrderComplete(){
+    public void checkOrderComplete() {
         new WebDriverWait(driver, Duration.ofSeconds(1)).until
                 (ExpectedConditions.textToBePresentInElementLocated(textOrder, "Заказ оформлен"));
         new WebDriverWait(driver, Duration.ofSeconds(1)).until

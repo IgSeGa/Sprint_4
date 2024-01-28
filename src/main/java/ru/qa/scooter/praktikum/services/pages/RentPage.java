@@ -1,4 +1,4 @@
-package page.object;
+package ru.qa.scooter.praktikum.services.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -27,38 +27,45 @@ public class RentPage {
     private By orderButton = By.xpath("//button[contains(@class, \"Button_Middle__1CSJM\") " +
             "and contains (text(), \"Заказать\")]");
 
-    public RentPage(WebDriver driver){
+    public RentPage(WebDriver driver) {
         this.driver = driver;
     }
+
     //Метод проверяющий, что открыта нужная страница
-    public void checkRentPage(){
+    public void checkRentPage() {
         new WebDriverWait(driver, Duration.ofSeconds(3))
-                .until(ExpectedConditions.textToBePresentInElementLocated(titleOfPage,"Про аренду"));
+                .until(ExpectedConditions.textToBePresentInElementLocated(titleOfPage, "Про аренду"));
     }
+
     //Заполнение даты
-    public void  setDeliveryDate(String date){
+    public void setDeliveryDate(String date) {
         driver.findElement(deliveryDate).sendKeys(date);
         driver.findElement(deliveryDate).sendKeys(Keys.ENTER);
     }
+
     //Зполнение периода аренды
-    public void setPeriod(){
+    public void setPeriod() {
         driver.findElement(rentTime).click();
         driver.findElement(period).click();
     }
+
     //Активация черного чекбокса
-    public void setBlackBox(){
+    public void setBlackBox() {
         driver.findElement(blackBox).click();
     }
+
     //Активация серого чекбокса
-    public void setGreyBox(){
+    public void setGreyBox() {
         driver.findElement(greyBox).click();
     }
+
     //Заполнение поля "Комментарий"
-    public void setComment(String text){
+    public void setComment(String text) {
         driver.findElement(comment).sendKeys(text);
     }
+
     //Сводный метод проверки заполнения полей
-    public void fillFormsRent(String date, String textComment){
+    public void fillFormsRent(String date, String textComment) {
         checkRentPage();
         setDeliveryDate(date);
         setPeriod();
@@ -66,8 +73,9 @@ public class RentPage {
         setGreyBox();
         setComment(textComment);
     }
+
     //Клик на кнопку создания заказа
-    public void clickOrderButton(){
+    public void clickOrderButton() {
         driver.findElement(orderButton).click();
     }
 }

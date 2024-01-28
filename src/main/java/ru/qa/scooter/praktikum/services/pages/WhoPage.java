@@ -1,4 +1,4 @@
-package page.object;
+package ru.qa.scooter.praktikum.services.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -24,38 +24,45 @@ public class WhoPage {
     //Кнопка Далее
     private By buttonNext = By.xpath("//button[contains(@class, \"Button_Middle__1CSJM\")]");
 
-    public WhoPage(WebDriver driver){
+    public WhoPage(WebDriver driver) {
         this.driver = driver;
     }
+
     //Проверка корректно загруженной страницы
-    public void checkWhoPage(){
+    public void checkWhoPage() {
         new WebDriverWait(driver, Duration.ofSeconds(3))
                 .until(ExpectedConditions.textToBePresentInElementLocated(titleOfPage, "Для кого самокат"));
     }
+
     //Метод для заполнения имени
-    public void setFirstName(String name){
+    public void setFirstName(String name) {
         driver.findElement(firstName).sendKeys(name);
     }
+
     //Метод для заполнения фамилии
-    public void setLastName(String surname){
+    public void setLastName(String surname) {
         driver.findElement(lastName).sendKeys(surname);
     }
+
     //Метод для заполнения адреса
-    public void setAdress(String toWhere){
+    public void setAdress(String toWhere) {
         driver.findElement(adress).sendKeys(toWhere);
     }
+
     //Метод для выбора станции метро
-    public void setMetro(){
+    public void setMetro() {
         driver.findElement(metro).click();
         driver.findElement(metro).sendKeys(Keys.ARROW_DOWN);
         driver.findElement(metro).sendKeys(Keys.ENTER);
     }
+
     //Метод для заполнения номера телефона
-    public void setPhoneNumber(String phoneNumber){
+    public void setPhoneNumber(String phoneNumber) {
         driver.findElement(phone).sendKeys(phoneNumber);
     }
+
     //Сводный метод заполнения форм на странице
-    public void fillFormsWho(String name, String surname, String toWhere, String phoneNumber){
+    public void fillFormsWho(String name, String surname, String toWhere, String phoneNumber) {
         checkWhoPage();
         setFirstName(name);
         setLastName(surname);
@@ -63,8 +70,9 @@ public class WhoPage {
         setMetro();
         setPhoneNumber(phoneNumber);
     }
+
     //Клик на кнопку "Далее"
-    public void checkButtonNext(){
+    public void checkButtonNext() {
         driver.findElement(buttonNext).click();
     }
 }
